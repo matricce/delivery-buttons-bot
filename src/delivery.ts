@@ -180,7 +180,7 @@ export async function deliveryEvents(bot: Bot) {
         if (ctx.update?.callback_query?.message?.text) {
           await bot.api
             .editMessageText(postChatId, postId, ctx.update?.callback_query?.message?.text, {
-              disable_web_page_preview: setup.disable_preview,
+              link_preview_options: setup.disable_preview,
               entities,
               reply_markup: setup.gotoMenu,
             })
