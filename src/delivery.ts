@@ -52,8 +52,10 @@ const objectOption = {
 
 const Delivery = async (bot: Bot, ctx: any) => {
   {
-    const postChatId: number = ctx.update?.channel_post?.chat?.id;
-    const postId = ctx.update?.channel_post?.message_id;
+    const postChatId: number =
+      ctx.update?.channel_post?.chat?.id || ctx.update?.edited_channel_post?.chat?.id;
+    const postId =
+      ctx.update?.channel_post?.message_id || ctx.update?.edited_channel_post?.message_id;
     bot.api
       .editMessageReplyMarkup(postChatId, postId, { reply_markup: menuMain_v2 })
       .catch(err => console.error(err));
